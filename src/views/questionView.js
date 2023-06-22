@@ -7,6 +7,7 @@ import { NEXT_QUESTION_BUTTON_ID, SCORE_TABLE_ID } from '../constants.js';
  */
 export const createQuestionElement = question => {
   const element = document.createElement('div');
+  element.classList.add("question-element");
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
 
