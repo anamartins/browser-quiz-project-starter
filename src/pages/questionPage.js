@@ -12,6 +12,7 @@ import { quizData } from '../data.js';
 
 
 
+
 export const initQuestionPage = () => {
   const currentQuizData = JSON.parse(window.localStorage.getItem('quizData'));
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -53,6 +54,8 @@ export const initQuestionPage = () => {
     nextButton.innerText = 'Finish Quiz';
     nextButton.id = FINISH_QUIZ_BUTTON_ID;
     nextButton.addEventListener('click', finishQuiz);
+    // ///////finish button has different style 
+    nextButton.style.background='linear-gradient(to right, #ff0000, #ff9999)' ;
   } else {
     document
       .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -117,6 +120,10 @@ const finishQuiz = () => {
   userInterface.innerHTML = '';
   userInterface.appendChild(scoreElement);
   window.localStorage.removeItem('quizData');
+  // const restartBtn=document.createElement('button')
+  // userInterface.appendChild(restartBtn);
+  // restartBtn.addEventListener('click',loadApp)
+
 };
 
 //calculate current score
