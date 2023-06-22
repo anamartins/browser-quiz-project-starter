@@ -9,6 +9,7 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
+import { initWelcomePage } from './welcomePage.js';
 
 
 
@@ -53,6 +54,8 @@ export const initQuestionPage = () => {
     nextButton.innerText = 'Finish Quiz';
     nextButton.id = FINISH_QUIZ_BUTTON_ID;
     nextButton.addEventListener('click', finishQuiz);
+    // ///////finish button has different style 
+    nextButton.style.background='linear-gradient(to right, #ff0000, #ff9999)' ;
   } else {
     document
       .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -117,6 +120,12 @@ const finishQuiz = () => {
   userInterface.innerHTML = '';
   userInterface.appendChild(scoreElement);
   window.localStorage.removeItem('quizData');
+  // ////////   init welcom page again 
+  const restartBtn=document.createElement('button')
+  restartBtn.innerHTML='RESTART'
+  userInterface.appendChild(restartBtn);
+  restartBtn.addEventListener('click',initWelcomePage)
+
 };
 
 //calculate current score
