@@ -1,10 +1,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+
 }
 
-#user-interface div {
-  position:relative;
-}
 
 .centered {
   position: fixed;
