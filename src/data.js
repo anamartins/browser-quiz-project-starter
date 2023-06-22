@@ -7,7 +7,9 @@
   these variables will be imported by your handlers when necessary
     not by your logic
     not by your listeners
-*/
+add something*/
+
+
 
 export const quizData = {
   currentQuestionIndex: 0,
