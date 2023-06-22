@@ -9,7 +9,7 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { quizData } from '../data.js';
-
+import { initWelcomePage } from './welcomePage.js';
 
 
 
@@ -120,9 +120,11 @@ const finishQuiz = () => {
   userInterface.innerHTML = '';
   userInterface.appendChild(scoreElement);
   window.localStorage.removeItem('quizData');
-  // const restartBtn=document.createElement('button')
-  // userInterface.appendChild(restartBtn);
-  // restartBtn.addEventListener('click',loadApp)
+  // ////////   init welcom page again 
+  const restartBtn=document.createElement('button')
+  restartBtn.innerHTML='RESTART'
+  userInterface.appendChild(restartBtn);
+  restartBtn.addEventListener('click',initWelcomePage)
 
 };
 
