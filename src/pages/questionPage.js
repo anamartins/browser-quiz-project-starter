@@ -53,9 +53,7 @@ export const initQuestionPage = () => {
 
     nextButton.innerText = 'Finish Quiz';
     nextButton.id = FINISH_QUIZ_BUTTON_ID;
-    nextButton.addEventListener('click', finishQuiz);
-    // ///////finish button has different style 
-    nextButton.style.background='linear-gradient(to right, #ff0000, #ff9999)' ;
+    nextButton.addEventListener('click', finishQuiz);    
   } else {
     document
       .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -120,10 +118,11 @@ const finishQuiz = () => {
   userInterface.innerHTML = '';
   userInterface.appendChild(scoreElement);
   window.localStorage.removeItem('quizData');
-  // ////////   init welcom page again 
+  // init welcome page again 
   const restartBtn=document.createElement('button')
   restartBtn.innerHTML='RESTART'
   userInterface.appendChild(restartBtn);
+  restartBtn.setAttribute('id', 'restart-button')
   restartBtn.addEventListener('click',initWelcomePage)
 
 };
