@@ -2,17 +2,11 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  display: grid;
-  place-items: center;
   margin: 0;
 }
 
 #user-interface {
   min-width: 300px;
-}
-
-#score_table {
-  justify-self: center;
 }
 
 .question-element {
@@ -76,6 +70,26 @@ button:hover {
 
 .option {
   background-color: #803e96;  
+}
+
+#finish_quiz_button {
+  background: linear-gradient(to top, #ff0000, #ff9999, #ff0000);
+  color: black;
+  font-weight: bolder;
+}
+
+#restart-button {
+  background-color: #008000;
+}
+
+.correct-answer {
+  background-color: #50C878;
+  color: black;
+  font-weight: bolder;
+}
+
+.wrong-answer {
+  background-color: #fa2832;
 }
 
 @media (max-width: 44rem) {
