@@ -114,13 +114,21 @@ const selectAnswer = optionId => {
     const quizScore = calculateScore(currentQuizData);
     const scoreElement = createScoreElement(quizScore);
     
+    const progressContainer=document.getElementById('progress-container')
+
     const scoreDiv = document.getElementById(SCORE_TABLE_ID);
     scoreDiv.innerHTML = '';
     scoreDiv.appendChild(scoreElement);
+    scoreDiv.appendChild(progressContainer)
+
+ 
+
 
     //add quiz data to localstorage to continue quiz if user refresh the page
     window.localStorage.setItem('quizData', JSON.stringify(currentQuizData));
   }
+    
+
 };
 
 //Finish button click function
