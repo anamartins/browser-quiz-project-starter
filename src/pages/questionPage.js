@@ -81,7 +81,7 @@ export const initQuestionPage = () => {
 // add a progress element
   const progressElement = document.createElement('div');
   progressElement.id = 'progress-bar';
-  userInterface.appendChild(progressContainer);
+  scoreDiv.appendChild(progressContainer);
   progressContainer.appendChild(progressElement)
 
 // calculate the progress 
