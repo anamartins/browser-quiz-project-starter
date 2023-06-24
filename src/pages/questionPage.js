@@ -74,11 +74,25 @@ export const initQuestionPage = () => {
         .classList.add('wrong-answer');
     }
   }
+  // add a progress container 
+  const progressContainer=document.createElement('div')
+  progressContainer.id='progress-container'
+  progressContainer.style.width='100%'
+// add a progress element
+  const progressElement = document.createElement('div');
+  progressElement.id = 'progress-bar';
+  scoreDiv.appendChild(progressContainer);
+  progressContainer.appendChild(progressElement)
+
+// calculate the progress 
+const progressPercentage = ((currentQuizData.currentQuestionIndex + 1) / currentQuizData.questions.length) * 100;
+progressElement.style.width = `${progressPercentage}%`;
+
 };
 
 const nextQuestion = () => {
   const currentQuizData = JSON.parse(window.localStorage.getItem('quizData'));
-  currentQuizData.currentQuestionIndex += 1;
+  currentQuizData.currentQuestionIndex += 1; 
   window.localStorage.setItem('quizData', JSON.stringify(currentQuizData));
   initQuestionPage();
 };

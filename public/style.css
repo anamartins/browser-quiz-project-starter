@@ -97,3 +97,16 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+#progress-container{
+  margin: 10px;
+  border: 2px solid black;
+  
+}
+#progress-bar {
+  background-color: green;
+  height: 20px;
+  width: 0;
+  transition:all 0.5s;
+  color: black;
+}
