@@ -4,6 +4,7 @@ import {
   USER_INTERFACE_ID,
   FINISH_QUIZ_BUTTON_ID,
   SCORE_TABLE_ID,
+  SHOW_ANSWER_BUTTON_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -16,9 +17,14 @@ import { initWelcomePage } from './welcomePage.js';
 export const initQuestionPage = () => {
   const currentQuizData = JSON.parse(window.localStorage.getItem('quizData'));
   const userInterface = document.getElementById(USER_INTERFACE_ID);
+  
   userInterface.innerHTML = '';
 
-  const currentQuestion =
+ // fade-in animation
+   userInterface.classList.remove('fade-out');
+   userInterface.classList.add('fade-in');
+
+   const currentQuestion =
     currentQuizData.questions[currentQuizData.currentQuestionIndex];
 
   const questionElement = createQuestionElement(currentQuestion.text);
@@ -34,6 +40,16 @@ export const initQuestionPage = () => {
   userInterface.appendChild(questionElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
+
+  //added eventlistener to "show answer" buttons
+  const showAnswerBtn = document.getElementById(SHOW_ANSWER_BUTTON_ID);
+  showAnswerBtn.addEventListener('click', () => {
+  
+  const correctAnswerElement = document.getElementById(currentQuestion.correct);
+  correctAnswerElement.classList.add('correct-answer');
+  
+});
+
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
@@ -75,18 +91,18 @@ export const initQuestionPage = () => {
     }
   }
   // add a progress container 
-  const progressContainer=document.createElement('div')
-  progressContainer.id='progress-container'
-  progressContainer.style.width='100%'
+  const progressContainer=document.createElement('div');
+  progressContainer.id='progress-container';
+  
 // add a progress element
   const progressElement = document.createElement('div');
   progressElement.id = 'progress-bar';
   scoreDiv.appendChild(progressContainer);
   progressContainer.appendChild(progressElement)
 
-// calculate the progress 
-const progressPercentage = ((currentQuizData.currentQuestionIndex + 1) / currentQuizData.questions.length) * 100;
-progressElement.style.width = `${progressPercentage}%`;
+  // calculate the progress 
+  const progressPercentage = ((currentQuizData.currentQuestionIndex + 1) / currentQuizData.questions.length) * 100;
+  progressElement.style.width = `${progressPercentage}%`;
 
 };
 
@@ -94,7 +110,14 @@ const nextQuestion = () => {
   const currentQuizData = JSON.parse(window.localStorage.getItem('quizData'));
   currentQuizData.currentQuestionIndex += 1; 
   window.localStorage.setItem('quizData', JSON.stringify(currentQuizData));
+  const userInterface = document.getElementById(USER_INTERFACE_ID);
+  
+    userInterface.classList.remove('fade-in');
+    userInterface.classList.add('fade-out');
+  // Wait for the fade-out animation to complete before loading new question
+  window.setTimeout(function () {
   initQuestionPage();
+}, 200);
 };
 
 //option buttons click function
@@ -120,6 +143,7 @@ const selectAnswer = optionId => {
     scoreDiv.innerHTML = '';
     scoreDiv.appendChild(scoreElement);
     scoreDiv.appendChild(progressContainer)
+    
 
  
 
@@ -161,3 +185,5 @@ const calculateScore = quizData => {
   });
   return quizScore;
 };
+
+
