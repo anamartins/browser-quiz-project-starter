@@ -1,4 +1,4 @@
-import { ANSWERS_LIST_ID } from '../constants.js';
+import { ANSWERS_LIST_ID, SHOW_ANSWER_BUTTON_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID, SCORE_TABLE_ID } from '../constants.js';
 
 /**
@@ -18,10 +18,14 @@ export const createQuestionElement = question => {
 
     <div id="${ANSWERS_LIST_ID}">
     </div>
-
-    <button id="${NEXT_QUESTION_BUTTON_ID}">
-      Next question
-    </button>
+    <div class = "bottom-buttons">
+      <button id="${SHOW_ANSWER_BUTTON_ID}">
+        Show answer
+      </button>
+      <button id="${NEXT_QUESTION_BUTTON_ID}">
+        Next question
+      </button>
+    </div>
   `;
 
   return element;
