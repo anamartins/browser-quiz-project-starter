@@ -44,7 +44,8 @@ export const initQuestionPage = () => {
   //added eventlistener to "show answer" buttons
   const showAnswerBtn = document.getElementById(SHOW_ANSWER_BUTTON_ID);
   showAnswerBtn.addEventListener('click', () => {
-  
+  currentQuizData.questions[currentQuizData.currentQuestionIndex].selected="passed"
+  window.localStorage.setItem("quizData",JSON.stringify(currentQuizData))
   const correctAnswerElement = document.getElementById(currentQuestion.correct);
   correctAnswerElement.classList.add('correct-answer');
   
