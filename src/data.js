@@ -141,7 +141,7 @@ export const quizData = {
         c: 'Shift',
         d: 'Splice'
       },
-      correct: 'c',
+      correct: 'd',
       selected: null
     },
   ],
